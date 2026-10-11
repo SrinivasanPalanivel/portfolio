@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="amber" data-mode="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Srinivasan Palanivel | Lead SDET</title>
+  <meta name="description"
+    content="Lead SDET with 6 years in UI, API and regression automation. Playwright, Selenium, RestAssured, CI/CD and AI-assisted testing tools.">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== THEME TOKENS: edit colors here ===== */
+    :root[data-accent="amber"][data-mode="dark"] {
+      --bg: #15100A;
+      --surface: #1D1710;
+      --line: #33281A;
+      --text: #F7EEDF;
+      --muted: #B09C80;
+      --accent: #F59E0B;
+      --on-accent: #2A1A02;
+      --fg: #FBBF24
+    }
+
+    :root[data-accent="amber"][data-mode="light"] {
+      --bg: #FBF6EC;
+      --surface: #FFFFFF;
+      --line: #E8DCC5;
+      --text: #2A2013;
+      --muted: #6E5F48;
+      --accent: #F59E0B;
+      --on-accent: #2A1A02;
+      --fg: #8A4B05
+    }
+
+    :root[data-accent="teal"][data-mode="dark"] {
+      --bg: #0B1220;
+      --surface: #111A2C;
+      --line: #1F2D45;
+      --text: #E6EDF7;
+      --muted: #8FA3BF;
+      --accent: #2DD4BF;
+      --on-accent: #06231F;
+      --fg: #2DD4BF
+    }
+
+    :root[data-accent="teal"][data-mode="light"] {
+      --bg: #F3F8F8;
+      --surface: #FFFFFF;
+      --line: #D3E3E3;
+      --text: #0F2430;
+      --muted: #4C6672;
+      --accent: #2DD4BF;
+      --on-accent: #06231F;
+      --fg: #0B6B63
+    }
+
+    /* ========================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 400 17px/1.65 Figtree, system-ui, sans-serif;
+      transition: background .25s, color .25s
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Bricolage Grotesque', Figtree, system-ui, sans-serif;
+      line-height: 1.1;
+      letter-spacing: -.02em
+    }
+
+    a {
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 32px
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 16px
+    }
+
+    .logo {
+      font: 700 18px 'Bricolage Grotesque', sans-serif;
+      text-decoration: none
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+      font-size: 15px
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--muted)
+    }
+
+    .links a:hover {
+      color: var(--text)
+    }
+
+    .ctl {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .sw {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      padding: 0
+    }
+
+    .sw[aria-pressed="true"] {
+      border-color: var(--text)
+    }
+
+    .sw.a {
+      background: #F59E0B
+    }
+
+    .sw.t {
+      background: #2DD4BF
+    }
+
+    .mode {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font: 500 13px Figtree, sans-serif;
+      cursor: pointer
+    }
+
+    @media(max-width:760px) {
+      .links {
+        display: none
+      }
+    }
+
+    .hero {
+      padding: 88px 0 80px;
+      border-top: 0
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 7vw, 76px);
+      margin-bottom: 20px
+    }
+
+    .hero h1 span {
+      color: var(--fg)
+    }
+
+    .hero p.lead {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 30em;
+      margin-bottom: 28px
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid var(--line)
+    }
+
+    .btn.p {
+      background: var(--accent);
+      color: var(--on-accent);
+      border-color: var(--accent)
+    }
+
+    .btn:hover {
+      border-color: var(--accent)
+    }
+
+    .run {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font: 400 14px/1.9 ui-monospace, SFMono-Regular, Menlo, monospace
+    }
+
+    .run .hd {
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      margin-bottom: 8px
+    }
+
+    .run .ln {
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      animation: in .4s forwards
+    }
+
+    .run .ln:nth-of-type(1) {
+      animation-delay: .3s
+    }
+
+    .run .ln:nth-of-type(2) {
+      animation-delay: .7s
+    }
+
+    .run .ln:nth-of-type(3) {
+      animation-delay: 1.1s
+    }
+
+    .run .ln:nth-of-type(4) {
+      animation-delay: 1.5s
+    }
+
+    .run .ok {
+      color: var(--fg)
+    }
+
+    .run .ft {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      color: var(--fg);
+      opacity: 0;
+      animation: in .4s 1.9s forwards
+    }
+
+    @keyframes in {
+      from {
+        opacity: 0;
+        transform: translateY(4px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media(max-width:860px) {
+      .hero .wrap {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px 56px
+    }
+
+    .stats div {
+      min-width: 130px
+    }
+
+    .stats b {
+      display: block;
+      font: 700 40px 'Bricolage Grotesque', sans-serif;
+      color: var(--fg);
+      line-height: 1.1
+    }
+
+    .stats span {
+      color: var(--muted);
+      font-size: 15px
+    }
+
+
+
+    .pj {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px
+    }
+
+    .pj article {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px
+    }
+
+    .pj article:first-child {
+      grid-column: 1/-1;
+      border-color: var(--accent)
+    }
+
+    .pj h3 {
+      font-size: 21px;
+      margin-bottom: 8px
+    }
+
+    .pj p {
+      color: var(--muted);
+      margin-bottom: 14px
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0
+    }
+
+    .tags li {
+      font-size: 13px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--fg)
+    }
+
+    @media(max-width:700px) {
+      .pj {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .aw {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 56px;
+      list-style: none;
+      padding: 0
+    }
+
+    .aw b {
+      font: 700 22px 'Bricolage Grotesque', sans-serif;
+      display: block
+    }
+
+    .aw span {
+      color: var(--muted);
+      font-size: 15px
+    }
+
+    .ct {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      margin-bottom: 28px
+    }
+
+    .ct a {
+      color: var(--fg);
+      font-weight: 500
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .js .rv {
+      opacity: 0;
+      transform: translateX(-48px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .js .rv.r {
+      transform: translateX(48px)
+    }
+
+    .js .rv.in {
+      opacity: 1;
+      transform: none
+    }
+
+    body {
+      overflow-x: clip
+    }
+
+    #bar {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 3px;
+      width: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left
+    }
+
+    button.btn {
+      background: none;
+      color: var(--text);
+      font: 600 15px Figtree, sans-serif;
+      cursor: pointer;
+      margin-bottom: 28px
+    }
+
+    @keyframes down {
+      from {
+        opacity: 0;
+        transform: translateY(-8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px
+    }
+
+    .grp {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px
+    }
+
+    .grp h3 {
+      font-size: 19px;
+      margin-bottom: 16px
+    }
+
+    .tiles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .tool {
+      font-size: 13px;
+      padding: 3px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted)
+    }
+
+    .tool.tile {
+      display: block;
+      width: 92px;
+      padding: 12px 4px 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 12.5px;
+      line-height: 1.25;
+      color: var(--text);
+      transition: border-color .2s, transform .2s
+    }
+
+    .tool.tile:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px)
+    }
+
+    .tool.tile i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 8px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--line)
+    }
+
+    .tool.tile img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain
+    }
+
+    .tiles:empty {
+      display: none
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      list-style: none;
+      padding: 0
+    }
+
+    .pills li {
+      font-size: 13px;
+      padding: 3px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted)
+    }
+
+    .tiles+.pills {
+      margin-top: 14px
+    }
+
+    .tiles:empty+.pills {
+      margin-top: 0
+    }
+
+    .tl {
+      display: grid;
+      gap: 16px
+    }
+
+    .job {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0
+    }
+
+    .job[open] {
+      border-color: var(--accent)
+    }
+
+    .job summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 56px 20px 24px;
+      position: relative
+    }
+
+    .job summary::-webkit-details-marker {
+      display: none
+    }
+
+    .job summary::after {
+      content: "";
+      position: absolute;
+      right: 26px;
+      top: 28px;
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--fg);
+      border-bottom: 2px solid var(--fg);
+      transform: rotate(45deg);
+      transition: transform .25s
+    }
+
+    .job[open] summary::after {
+      transform: rotate(-135deg);
+      top: 34px
+    }
+
+    .job h3 {
+      font-size: 22px
+    }
+
+    .job .co {
+      color: var(--fg);
+      font-weight: 500;
+      font-size: 16px;
+      margin-top: 2px
+    }
+
+    .job .meta {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px
+    }
+
+    .job ul {
+      padding: 0 24px 22px 44px;
+      max-width: 50em
+    }
+
+    .job li {
+      margin-bottom: 6px
+    }
+
+    .job li::marker {
+      color: var(--fg)
+    }
+
+    .job[open] ul {
+      animation: down .35s ease
+    }
+
+    @keyframes down {
+      from {
+        opacity: 0;
+        transform: translateY(-8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .run .ln,
+      .run .ft {
+        opacity: 1
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div id="bar"></div>
+    <div class="wrap">
+      <a class="logo" href="#top">Srinivasan Palanivel</a>
+      <div class="links"><a href="#skills">Skills</a><a href="#experience">Experience</a><a
+          href="#projects">Projects</a><a href="#contact">Contact</a></div>
+      <div class="ctl" role="group" aria-label="Theme settings">
+        <button class="sw a" data-accent="amber" aria-label="Amber theme" aria-pressed="true"></button>
+        <button class="sw t" data-accent="teal" aria-label="Teal theme" aria-pressed="false"></button>
+        <button class="mode" id="mode" aria-label="Switch between dark and light mode">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <h1>Lead SDET who ships <span>test automation</span> that teams actually use.</h1>
+        <p class="lead">I'm Srinivasan Palanivel. Six years of UI, API and regression testing, now leading quality
+          strategy and framework design across four concurrent projects in Chennai.</p>
+        <div class="btns">
+          <a class="btn p" href="Srinivasan_Palanivel_Resume.pdf" download>Download resume</a>
+          <a class="btn" href="https://www.linkedin.com/in/srinivasan-palanivel/">LinkedIn</a>
+          <a class="btn" href="https://github.com/SrinivasanPalanivel">GitHub</a>
+        </div>
+      </div>
+      <div class="run" aria-label="Summary of recent automation results">
+        <div class="hd">test run: recent delivery</div>
+        <div class="ln"><span class="ok">PASS</span><span>Pricing Engine regression, 200+ scenarios</span></div>
+        <div class="ln"><span class="ok">PASS</span><span>Selenium to Playwright, 100 tests migrated</span></div>
+        <div class="ln"><span class="ok">PASS</span><span>Daily smoke run on GitHub Actions</span></div>
+        <div class="ln"><span class="ok">PASS</span><span>ABSA UI suite, 500+ test cases</span></div>
+        <div class="ft">4 passed, 0 manual reruns</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div><b>6 years</b><span>in test automation</span></div>
+        <div><b>500+</b><span>test cases in one suite</span></div>
+        <div><b>2 wks to 3-4 days</b><span>pricing validation cycle</span></div>
+        <div><b>4+</b><span>concurrent projects led</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills and tools</h2>
+      <div class="grid">
+        <div class="grp">
+          <h3>Automation</h3>
+          <div class="tiles"><span class="tool" data-icon="selenium">Selenium</span><span class="tool"
+              data-icon="playwright">Playwright</span><span class="tool" data-icon="appium">Appium</span><span
+              class="tool" data-icon="cucumber">Cucumber</span></div>
+        </div>
+        <div class="grp">
+          <h3>Testing</h3>
+          <div class="tiles"><span class="tool" data-icon="postman">Postman</span><span class="tool"
+              data-icon="jmeter">JMeter</span></div>
+        </div>
+        <div class="grp">
+          <h3>Languages and data</h3>
+          <div class="tiles"><span class="tool" data-icon="java">Java</span><span class="tool"
+              data-icon="javascript">JavaScript</span><span class="tool" data-icon="typescript">TypeScript</span><span
+              class="tool" data-icon="postgresql">SQL, PostgreSQL</span></div>
+        </div>
+        <div class="grp">
+          <h3>CI/CD and version control</h3>
+          <div class="tiles"><span class="tool" data-icon="jenkins">Jenkins</span><span class="tool"
+              data-icon="githubactions">GitHub Actions</span><span class="tool" data-icon="git">Git</span><span
+              class="tool" data-icon="github">GitHub</span><span class="tool" data-icon="maven">Maven</span></div>
+        </div>
+        <div class="grp">
+          <h3>Test and defect management</h3>
+          <div class="tiles"><span class="tool" data-icon="jira">Jira</span></div>
+        </div>
+        <div class="grp">
+          <h3>Cloud and OS</h3>
+          <div class="tiles"><span class="tool" data-icon="aws">AWS</span><span class="tool"
+              data-icon="linux">Linux</span></div>
+        </div>
+        <div class="grp">
+          <h3>AI and agentic development</h3>
+          <div class="tiles"><span class="tool" data-icon="githubcopilot">GitHub Copilot</span><span class="tool"
+              data-icon="m365copilot">M365 Copilot</span><span class="tool" data-icon="claudecode">Claude Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <button class="btn" id="toggleAll" type="button">Expand all</button>
+      <div class="tl">
+        <details class="job rv" open>
+          <summary>
+            <h3>Lead SDET</h3>
+            <div class="co">Qeagle Assurance, Chennai</div><span class="meta">Apr 2026 to present</span>
+          </summary>
+          <ul>
+            <li>Own quality strategy and framework architecture across 4+ concurrent projects, driving automation for
+              monthly releases.</li>
+            <li>Led the DebiCheck project from planning to on-time delivery while mentoring a team member.</li>
+            <li>Cut the Insurance Pricing Engine validation cycle from 2 weeks to 3-4 days.</li>
+          </ul>
+        </details>
+        <details class="job rv">
+          <summary>
+            <h3>Senior SDET</h3>
+            <div class="co">Qeagle Assurance, Chennai</div><span class="meta">Jan 2023 to Mar 2026</span>
+          </summary>
+          <ul>
+            <li>Built a UI automation framework for ABSA covering 5 enterprise apps and a 500+ test case suite.</li>
+            <li>Delivered API automation with RestAssured and Postman for the WhatsApp Chatbot and IDIT Suite.</li>
+            <li>Replaced untracked manual scripts on the Life Flexi Funeral suite with a full end-to-end regression
+              suite.</li>
+            <li>Automated the daily DSR report with a custom query-based solution.</li>
+          </ul>
+        </details>
+        <details class="job rv">
+          <summary>
+            <h3>Test Automation Engineer</h3>
+            <div class="co">Avacend Solutions, Chennai</div><span class="meta">Apr 2022 to Dec 2022</span>
+          </summary>
+          <ul>
+            <li>Automated the Wealth Management application with Selenium WebDriver and Java.</li>
+            <li>Wrote Cucumber BDD scenarios with BAs and POs, tying coverage to acceptance criteria.</li>
+          </ul>
+        </details>
+        <details class="job rv">
+          <summary>
+            <h3>Software Associate Engineer</h3>
+            <div class="co">Capgemini Engineering, Chennai</div><span class="meta">Jun 2020 to Feb 2022</span>
+          </summary>
+          <ul>
+            <li>Built Java and Selenium automation with Page Object Model for customer portals and internal tools.</li>
+            <li>Designed end-to-end test cases across critical user journeys for early defect detection.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Selected projects</h2>
+      <div class="pj">
+        <article>
+          <h3>Insurance Pricing Engine automation</h3>
+          <p>A Playwright-based regression framework plus a self-serve web app so business users can run validations
+            themselves. The validation cycle dropped from 2 weeks to 3-4 days, and 200+ scenarios that couldn't be
+            tested within a release window are now fully covered.</p>
+          <ul class="tags">
+            <li>Playwright</li>
+            <li>Web app</li>
+            <li>Regression</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Selenium to Playwright migration agent</h3>
+          <p>An agent that migrated 100 test cases across 2 projects. I mentored teammates to use it for their own
+            migrations.</p>
+          <ul class="tags">
+            <li>Agentic</li>
+            <li>Selenium</li>
+            <li>Playwright</li>
+          </ul>
+        </article>
+        <article>
+          <h3>RAG test-case generator</h3>
+          <p>In development: an agentic tool that generates test cases from Jira stories, built with AI-orchestrated
+            development.</p>
+          <ul class="tags">
+            <li>RAG</li>
+            <li>Jira</li>
+            <li>Claude Code</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Daily smoke pipeline</h3>
+          <p>A GitHub Actions pipeline that triggers smoke runs every day and publishes results to the team and business
+            stakeholders, replacing manual execution.</p>
+          <ul class="tags">
+            <li>GitHub Actions</li>
+            <li>CI/CD</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Let's talk</h2>
+      <div class="ct">
+        <a href="mailto:sripal0207@gmail.com">sripal0207@gmail.com</a>
+        <a href="tel:+918015401856">+91 80154 01856</a>
+        <a href="https://www.linkedin.com/in/srinivasan-palanivel/">LinkedIn</a>
+        <a href="https://github.com/SrinivasanPalanivel">GitHub</a>
+      </div>
+      <a class="btn p" href="Srinivasan_Palanivel_Resume.pdf" download>Download resume</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">Srinivasan Palanivel, Chennai, India</div>
+  </footer>
+
+  <script>
+    /* ===== CONFIG: change these two lines to set your defaults ===== */
+    const CONFIG = {
+      accent: "amber",   // "amber" or "teal"
+      mode: "dark"       // "dark" or "light"
+    };
+    /* Visitors can still switch using the controls in the top bar.
+       Add ?accent=teal to the URL to preview the other color. */
+
+    (function () {
+      var root = document.documentElement;
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem("portfolio-theme") || "{}"); } catch (e) { }
+      var q = new URLSearchParams(location.search).get("accent");
+      var state = {
+        accent: q || saved.accent || CONFIG.accent,
+        mode: saved.mode || CONFIG.mode
+      };
+      if (state.accent !== "amber" && state.accent !== "teal") state.accent = "amber";
+      if (state.mode !== "dark" && state.mode !== "light") state.mode = "dark";
+
+      var swatches = document.querySelectorAll(".sw");
+      var modeBtn = document.getElementById("mode");
+
+      function apply() {
+        root.setAttribute("data-accent", state.accent);
+        root.setAttribute("data-mode", state.mode);
+        swatches.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.accent === state.accent)); });
+        modeBtn.textContent = state.mode === "dark" ? "Light" : "Dark";
+        try { localStorage.setItem("portfolio-theme", JSON.stringify(state)); } catch (e) { }
+      }
+      swatches.forEach(function (b) { b.addEventListener("click", function () { state.accent = b.dataset.accent; apply(); }); });
+      modeBtn.addEventListener("click", function () { state.mode = state.mode === "dark" ? "light" : "dark"; apply(); });
+      apply();
+    })();
+
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var items = [];
+      document.querySelectorAll(".stats div, .grp, .job, .pj article, .ct").forEach(function (el, i) {
+        el.classList.add("rv");
+        items.push(el);
+      });
+      document.querySelectorAll(".pj article").forEach(function (el, i) { if (i % 2 === 0 && i > 0) el.classList.add("r"); });
+      document.querySelectorAll(".stats div").forEach(function (el, i) { el.style.transitionDelay = (i * 90) + "ms"; });
+      if (reduce || !("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: .12 });
+        items.forEach(function (el) { io.observe(el); });
+      }
+      var bar = document.getElementById("bar");
+      function prog() {
+        var h = document.documentElement.scrollHeight - innerHeight;
+        bar.style.transform = "scaleX(" + (h > 0 ? Math.min(scrollY / h, 1) : 0) + ")";
+      }
+      addEventListener("scroll", prog, { passive: true }); prog();
+
+      var jobs = document.querySelectorAll("details.job");
+      var btn = document.getElementById("toggleAll");
+      function label() {
+        var allOpen = Array.prototype.every.call(jobs, function (j) { return j.open; });
+        btn.textContent = allOpen ? "Collapse all" : "Expand all";
+      }
+      btn.addEventListener("click", function () {
+        var allOpen = Array.prototype.every.call(jobs, function (j) { return j.open; });
+        jobs.forEach(function (j) { j.open = !allOpen; });
+        label();
+      });
+      jobs.forEach(function (j) { j.addEventListener("toggle", label); });
+      label();
+    })();
+
+    (function () {
+      var exts = ["svg", "png", "webp", "jpg"];
+      function load(name, cb, i) {
+        i = i || 0;
+        if (i >= exts.length) return cb(null);
+        var img = new Image();
+        img.onload = function () { cb(img); };
+        img.onerror = function () { load(name, cb, i + 1); };
+        img.src = "assets/" + name + "." + exts[i];
+      }
+      document.querySelectorAll(".tool[data-icon]").forEach(function (el, idx) {
+        load(el.dataset.icon, function (img) {
+          if (img) {
+            var box = document.createElement("i");
+            img.alt = ""; box.appendChild(img);
+            el.insertBefore(box, el.firstChild);
+            el.classList.add("tile");
+          } else {
+            el.remove();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
